@@ -1,0 +1,65 @@
+#include
+int main() {
+    int N;
+
+    printf("digite a ordem da matriz quadrada: ");
+    scanf("%d", &N);
+
+    //A leia a matriz
+    int A[N][N];
+    int soma_linhas[N];
+    int soma_colunas[N];
+    int soma_diagonal_principal = 0;
+    int soma_diagonal_secundaria = 0;
+    int todos_iguais = 1;
+
+    // leitura da matriz
+    printf("Digite os elementos da matriz:\n");
+    for(int i = 0; i < N; i++) {
+        for(int j = 0; j < N; j++) {
+            scanf("%d", &A[i][j]);
+        }
+    }
+
+    //B gere e escreve o vetor soma_linhas das colunas
+    for(int i = 0; i < N; i++) {
+        soma_linhas[i] = 0;
+        soma_colunas[i] = 0;
+
+        for(int j = 0; j < N; j++) {
+            soma_linhas[i] += A[i][j];
+            soma_colunas[i] += A[j][i];
+        }
+
+        // C verifica os elementos do vetor soma_linhas
+        if(i > 0 && soma_linhas[i] != soma_linhas[i-1]) {
+            todos_iguais = 0;
+        }
+
+        // D e E calcula a soma da principal e diagonal
+        soma_diagonal_principal += A[i][i];
+        soma_diagonal_secundaria += A[i][N - 1 - i];
+    }
+
+    // F impressa os resultados e verifica os elementos se s�o iguais
+    printf("\nvetor soma_linhas:\n");
+    for(int i = 0; i < N; i++) {
+        printf("%d ", soma_linhas[i]);
+    }
+
+    printf("\n\nvetor soma_colunas:\n");
+    for(int i = 0; i < N; i++) {
+        printf("%d ", soma_colunas[i]);
+    }
+
+    printf("\n\nsoma dos elementos da diagonal principal: %d", soma_diagonal_principal);
+    printf("\nsoma dos elementos da diagonal secund�ria: %d", soma_diagonal_secundaria);
+
+    if(todos_iguais) {
+        printf("\n\nOs elementos do vetor soma_linhas s�o todos iguais.");
+    } else {
+        printf("\n\nOs elementos do vetor soma_linhas n�o s�o todos iguais.");
+    }
+
+    return 0;
+}
