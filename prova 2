@@ -9,7 +9,7 @@ int main() {
     int A[N][N];
     int soma_linhas[N];
     int soma_colunas[N];
-    int soma_diagonal_principal = 0;
+    int soma_diagonal_principal = 0; 
     int soma_diagonal_secundaria = 0;
     int todos_iguais = 1;
 
